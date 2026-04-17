@@ -20,6 +20,7 @@ public class App {
                 case "등록": cmdRegister(); break;
                 case "목록": cmdList(); break;
                 case "삭제": cmdDelete(rq); break;
+                case "수정": cmdModify(rq); break;
             }
         }
     }
@@ -52,6 +53,23 @@ public class App {
         }
         articles.remove(target);
         System.out.println(id + "번 명언이 삭제되었습니다.");
+    }
+
+    private void cmdModify(Rq rq) {
+        int id = rq.getIntParam("id", -1);
+        Article target = findById(id);
+        if (target == null) {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
+            return;
+        }
+        System.out.println("명언(기존) : " + target.getContent());
+        System.out.print("명언 : ");
+        String newContent = scanner.nextLine().trim();
+        System.out.println("작가(기존) : " + target.getAuthor());
+        System.out.print("작가 : ");
+        String newAuthor = scanner.nextLine().trim();
+        target.setContent(newContent);
+        target.setAuthor(newAuthor);
     }
 
     private Article findById(int id) {
