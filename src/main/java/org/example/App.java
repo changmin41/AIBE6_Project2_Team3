@@ -23,6 +23,8 @@ public class App {
         String content = scanner.nextLine().trim();
         System.out.print("작가 : ");
         String author = scanner.nextLine().trim();
-        articles.add(new Article(content, author));
+        int id = articles.size() + 1;
+        articles.add(new Article(id, content, author));
+        System.out.println(id + "번 명언이 등록되었습니다.");
     }
 }
