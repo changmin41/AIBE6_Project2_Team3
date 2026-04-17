@@ -1,7 +1,16 @@
 package org.example;
 
+import java.util.Scanner;
+
 public class App {
-    void run(){
-        System.out.println("== 자바 서비스 ==");
+    private Scanner scanner = new Scanner(System.in);
+
+    void run() {
+        System.out.println("== 명언 앱 ==");
+        while (true) {
+            System.out.print("명령) ");
+            String input = scanner.nextLine().trim();
+            if (input.equals("종료")) return;
+        }
     }
 }
