@@ -46,6 +46,10 @@ public class App {
     private void cmdDelete(Rq rq) {
         int id = rq.getIntParam("id", -1);
         Article target = findById(id);
+        if (target == null) {
+            System.out.println(id + "번 명언은 존재하지 않습니다.");
+            return;
+        }
         articles.remove(target);
         System.out.println(id + "번 명언이 삭제되었습니다.");
     }
