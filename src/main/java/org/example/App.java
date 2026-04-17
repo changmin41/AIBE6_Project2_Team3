@@ -16,6 +16,7 @@ public class App {
             String input = scanner.nextLine().trim();
             if (input.equals("종료")) return;
             if (input.equals("등록")) cmdRegister();
+            if (input.equals("목록")) cmdList();
         }
     }
 
@@ -27,5 +28,14 @@ public class App {
         Article article = new Article(nextId++, content, author);
         articles.add(article);
         System.out.println(article.getId() + "번 명언이 등록되었습니다.");
+    }
+
+    private void cmdList() {
+        System.out.println("번호 / 작가 / 명언");
+        System.out.println("----------------------");
+        for (int i = articles.size() - 1; i >= 0; i--) {
+            Article a = articles.get(i);
+            System.out.println(a.getId() + " / " + a.getAuthor() + " / " + a.getContent());
+        }
     }
 }
