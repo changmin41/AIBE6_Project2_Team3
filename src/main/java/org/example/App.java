@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class App {
     private List<Article> articles = new ArrayList<>();
+    private int nextId = 1;
     private Scanner scanner = new Scanner(System.in);
 
     void run() {
@@ -23,8 +24,8 @@ public class App {
         String content = scanner.nextLine().trim();
         System.out.print("작가 : ");
         String author = scanner.nextLine().trim();
-        int id = articles.size() + 1;
-        articles.add(new Article(id, content, author));
-        System.out.println(id + "번 명언이 등록되었습니다.");
+        Article article = new Article(nextId++, content, author);
+        articles.add(article);
+        System.out.println(article.getId() + "번 명언이 등록되었습니다.");
     }
 }
